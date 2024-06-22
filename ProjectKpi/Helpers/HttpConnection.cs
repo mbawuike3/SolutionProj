@@ -5,15 +5,16 @@ namespace ProjectKpi.Helpers;
 
 public interface IHttpConnection
 {
-    Task<T?> WebConnection<T>(string url, string requestType, object? payload = null, Dictionary<string, string>? headers = null, string? authUser = null, string? authPaswrd = null) where T : new();
+    Task<(T? result, object? error)> WebConnection<T>(string url, string requestType, object? payload = null, Dictionary<string, string>? headers = null, string? authUser = null, string? authPaswrd = null) where T : new();
 }
 
 public class HttpConnection : IHttpConnection
 {
-    public async Task<T?> WebConnection<T>(string url, string requestType, object? payload = null,
+    public async Task<(T? result, object? error)> WebConnection<T>(string url, string requestType, object? payload = null,
         Dictionary<string, string>? headers = null, string? authUser = null, string? authPaswrd = null) where T : new()
     {
         T? result = new();
+        object? error = null;
         try
         {
             using var client = new HttpClient();
@@ -35,6 +36,8 @@ public class HttpConnection : IHttpConnection
                 case "put":
                     requestMessage.Method = HttpMethod.Put;
                     break;
+                default:
+                    throw new ArgumentException("Invalid request type");
             }
             if (payload != null)
             {
@@ -61,14 +64,13 @@ public class HttpConnection : IHttpConnection
             }
             else
             {
-
+                error = new {errorCode = response.StatusCode, errorMessage = responseContent };
             }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
-
+            error = new { errorCode = "Exception", errorMessage = ex.Message };
         }
-        return result;
+        return (result, error);
     }
 }

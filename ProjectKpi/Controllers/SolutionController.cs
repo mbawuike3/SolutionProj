@@ -19,20 +19,31 @@ namespace ProjectKpi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-           return Ok( await _connection.WebConnection<ClassResponse>(_configuration["Endpoint:url"]!, "get"));
+            var (result, error) = await _connection.WebConnection<ClassResponse>(_configuration["Endpoint:url"]!, "get");
+
+            if (error != null)
+            {
+                return BadRequest(error);
+            }
+
+            return Ok(result);
         }
         [HttpGet("rank")]
         public async Task<IActionResult> Get(string rank)
         {
-            var cyrpto = await _connection.WebConnection<ClassResponse>(_configuration["Endpoint:url"]!, "get");
-            if(cyrpto == null)
+            var (cyrpto, error) = await _connection.WebConnection<ClassResponse>(_configuration["Endpoint:url"]!, "get");
+            if (error != null)
             {
-                return NotFound();
+                return BadRequest(error);
+            }
+            if (cyrpto == null || cyrpto.data == null)
+            {
+                return NotFound(new { errorCode = "NotFound", errorMessage = "No data found." });
             }
             var filteredRank = cyrpto.data!.Where(x => x.rank == rank).FirstOrDefault();
             if (filteredRank == null)
             {
-                return NotFound("No rank found");
+                return NotFound(new { errorCode = "NotFound", errorMessage = "No rank found." });
             }
             return Ok(filteredRank);
         }

@@ -30,3 +30,4 @@ C:\Users\mbawu\UnitOfWork\UnitOfWorkProject\ProjectKpi\ProjectKpi\obj\Debug\net8
 C:\Users\mbawu\UnitOfWork\UnitOfWorkProject\ProjectKpi\ProjectKpi\obj\Debug\net8.0\ProjectKpi.pdb
 C:\Users\mbawu\UnitOfWork\UnitOfWorkProject\ProjectKpi\ProjectKpi\obj\Debug\net8.0\ProjectKpi.genruntimeconfig.cache
 C:\Users\mbawu\UnitOfWork\UnitOfWorkProject\ProjectKpi\ProjectKpi\obj\Debug\net8.0\ref\ProjectKpi.dll
+C:\Users\mbawu\UnitOfWork\UnitOfWorkProject\ProjectKpi\ProjectKpi\obj\Debug\net8.0\ProjectKpi.sourcelink.json

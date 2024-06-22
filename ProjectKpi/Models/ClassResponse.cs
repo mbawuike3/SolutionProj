@@ -4,6 +4,8 @@
     {
         public List<Data>? data { get; set; }
         public long timestamp { get; set; }
+        public string? code {  get; set; }
+        public string? Errormessage { get; set; }
     }
     public class Data
     {

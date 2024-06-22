@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjectKpi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acb4005b39cab4799fd25bb6118c7d9d88b9cc4e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjectKpi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjectKpi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
